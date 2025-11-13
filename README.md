@@ -1,2 +1,2 @@
 # Multiplayer-
-Multiplayer enhancement mod for GZDoom
+Multiplayer enhancement mod for UZDoom
