@@ -79,13 +79,25 @@ class MultiplayerPingMarker : MapMarker
 	{
 		Super.PostBeginPlay();
 
+		SpriteID spr;
 		State head = Master.SpawnState;
 		State cur = head;
-		while (cur && cur.Sprite <= 2 && cur.NextState != head)
-			cur = cur.NextState;
+		while (cur && !spr)
+		{
+			// If it's using a previous sprite, the only real sensible thing to
+			// do here is to grab the existing sprite.
+			if (cur.Sprite > 0 && cur.Sprite <= 2)
+				spr = Master.Sprite;
+			else
+				spr = cur.Sprite;
 
-		if (cur)
-			Sprite = cur.Sprite;
+			cur = cur.NextState;
+			if (cur == head)
+				break;
+		}
+
+		if (spr)
+			Sprite = spr;
 
 		if (!(Master is "MultiplayerLocation"))
 			Scale.Y *= Level.PixelStretch;
