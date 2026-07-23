@@ -868,7 +868,7 @@ class MultiplayerHandler : StaticEventHandler
 
             if (drawText)
             {
-                string title = players[i].GetUserName(12u);
+                string title = players[i].GetUserName(16u);
                 double wOfs = ConFont.StringWidth(title) * 0.5 * fScale.x;
                 Screen.DrawText(ConFont, -1, coord.x-wOfs, coord.y-hOfs, title,
                                 DTA_ScaleX, fScale.x, DTA_ScaleY, fScale.y, DTA_Color, col);
